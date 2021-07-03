@@ -10,6 +10,12 @@ def index(request):
 
 def ver_productos(request):
     nombre=request.POST['nombre']
-    descripcion=request.POST['descripcion']
-    precio=request.POST['precio']
+    listado = Producto.objects.filter(nombre__contains=nombre)
+    carrito = {"listado" : listado}
+    return render(request,'cakehouse/ver_productos.html',carrito)
+
+def pagar_productos(request):
+    nombre=request.POST['nombre']
+    listado = Producto.objects.filter(nombre__contains=nombre)
+    carrito = {"listado" : listado}
     return HttpResponse(nombre)
