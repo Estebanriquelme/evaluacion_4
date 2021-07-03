@@ -1,0 +1,80 @@
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones2.css' %}">
+<body class="cuerpo">
+    <!-- navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-success mb-4">
+      <img src="{% static 'cakehouse/imagenes/cake.png' %}" alt="" />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <p class="text-light" style="margin: 5px">
+          Bienvenido a nuestra tienda Cake House, donde encontrarás nuestros
+          sabrosos productos!<span class="sr-only">(current)</span>
+        </p>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-light" href="{%url 'cakehouse:index'%}"
+              >Home<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Registrarse</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+{%if listado%}
+    {%for p in listado%}
+    <main style="margin-bottom: 30px;" id="productos">
+        <div style="margin-bottom: 10px;" class="container-lg mb-4">
+          <div class="row">
+            <img
+              src="img/cupcakes.jpg"
+              class="col-sm-12 col-lg-6 img_producto mt-5 "
+              alt="..."
+            />
+            <div class="texto_producto col-sm-12 col-lg-6 mt-5 ">
+                <h1 class="mt-0">{{p.nombre}}</h1>
+                <h4 id="precio" class=" Precio">Precio ${{p.precio}} la unidad</h4>
+                <h4>{{p.descripcion}}</h4>
+                <h5>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex natus non, harum numquam reiciendis in debitis culpa asperiores repudiandae excepturi, ut eaque consequuntur corporis consequatur dolor optio aut sequi modi?
+                </h5>
+  
+                <form action="{%url 'cakehouse:pagar_productos'%}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="nombre" value="{{p.nombre}}">
+                <button type="submit" class="btn btn-primary btn-lg boton">
+                    Pedir
+                </button>
+                <button type="button" class="btn btn-success btn-lg boton">
+                    <img src="img/favorito.png" alt=""> favorito
+                </button>
+                </form>
+            </div>
+          </div>
+          <div  class="contenedor">
+            <h3 id="detalle">detalle:</h3>
+            <h5>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, minima facilis illo odio quos soluta esse libero repellendus at eos, culpa earum reprehenderit veritatis pariatur corporis dolor quas et sit.
+          </div>
+        </div>
+    </main>
+    {%endfor%}
+{%endif%}
+    <script src="{% static 'cakehouse/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static 'cakehouse/js/bootstrap.bundle.min.js'%}"></script>
+
+    
+</body>

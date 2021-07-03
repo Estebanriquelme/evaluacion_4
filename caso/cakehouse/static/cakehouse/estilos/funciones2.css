@@ -1,0 +1,78 @@
+body{
+    background: burlywood;
+    height: 100vh;
+}
+main{
+    background: rgba(243, 214, 121, 0.644);
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 500px;
+}
+
+#precio{
+    color: seagreen;
+}
+.boton{
+    margin-top: 10px;
+    max-width: 200px;
+    margin-bottom: 10px;
+    
+}
+#detalle{
+    
+    padding-top: 50px;
+
+}
+.social_bar{
+    position: fixed;
+    right: 0;
+    top: 35%;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 100;
+}
+.icon{
+    color: white;
+    text-decoration: none;
+    padding: .7rem;
+    display: flex;
+    transition: all .3s;
+}
+.icon_facebook{
+    background: #2E406E;
+    border-radius: 1rem 0 0 0;
+}
+.icon_instagram{
+    background: #bd20b5;
+    border-radius: 0 0 0 1rem;
+
+}
+.icon:hover{
+    padding-right: 5rem;
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: 0 0 .5rem rgba(0,0,0,0.42);
+}
+
+footer{
+    padding: 0;
+    margin: 0;
+    height: 70px;
+    text-align: center;
+    padding-top: 30px;
+}
+

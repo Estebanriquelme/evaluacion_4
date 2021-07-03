@@ -1,0 +1,24 @@
+label{
+    padding-top: 50px;
+}
+.contenedor{
+    background: rgba(243, 214, 121, 0.644);
+    
+    padding-bottom: 50px;
+}
+
+#boton{
+    margin-top: 20px;
+    width: 200px;
+    
+}
+
+
+
+footer{
+    padding: 0;
+    margin: 0;
+    height: 80px;
+    text-align: center;
+    padding-top: 30px;
+}
