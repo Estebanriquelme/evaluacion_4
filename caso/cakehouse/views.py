@@ -18,4 +18,7 @@ def pagar_productos(request):
     nombre=request.POST['nombre']
     listado = Producto.objects.filter(nombre__contains=nombre)
     carrito = {"listado" : listado}
-    return HttpResponse(nombre)
+    return render(request,'cakehouse/pagar_productos.html',carrito)
+
+def guardar_pago(request):
+    return HttpResponse('poto')

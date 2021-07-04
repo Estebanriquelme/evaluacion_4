@@ -1,0 +1,170 @@
+{%load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones2.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones3.css' %}">
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success mb-4">
+        <img src="{% static 'cakehouse/imagenes/cake.png' %}" alt="" />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <p class="text-light" style="margin: 5px">
+            Bienvenido a nuestra tienda Cake House, donde encontrarás nuestros
+            sabrosos productos!<span class="sr-only">(current)</span>
+          </p>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-light" href="{%url 'cakehouse:index'%}"
+                >Home<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">Registrarse</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <img
+          class="d-block mx-auto mb-4 img-fluid"
+          src="img/cupcakes.jpg"
+          alt=""
+        />
+{%if listado%}
+        {%for p in listado%}
+        <h2>Compra de {{p.nombre}}</h2>
+        {%endfor%}
+{%endif%}
+        <p class="lead">
+          Obtenga beneficios por cada compra que realice, desde códigos de
+          descuento hasta obtener las deseadas "yapas".
+        </p>
+      </div>
+    </div>
+    <form class="row g-3 m-3 contenedor" action="{%url 'cakehouse:guardar_pago'%}">
+      <div class="col-md-3">
+        <label for="" class="form-label">Nombre:</label>
+        <input
+          type="text"
+          class="form-control"
+          id=""
+          required
+          placeholder="Juan"
+          name="nombre"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="" class="form-label">Segundo Nombre:</label>
+        <input
+          type="text"
+          class="form-control"
+          id=""
+          required
+          placeholder="Andrés"
+          name="s_nombre"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="inputAddress" class="form-label">Apellido Paterno:</label>
+        <input type="text" class="form-control" id="" required
+        placeholder="López" 
+        name=""apellido_p"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <label for="inputAddress2" class="form-label">Apellido Materno:</label>
+        <input
+          type="text"
+          class="form-control"
+          id=""
+          required
+          placeholder="Torres"
+          name="apellido_m"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="" class="form-label">Dirección:</label>
+        <input
+          type="text"
+          class="form-control"
+          id=""
+          requiered
+          placeholder="Calle alta 19 sur"
+          name="direccion"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="" class="form-label">Casa/depto</label>
+        <input
+          type="text"
+          class="form-control"
+          id=""
+          requiered
+          placeholder="Casa"
+          name="casadepto"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="" class="form-label">Número de domicilio</label>
+        <input
+          type="text"
+          class="form-control"
+          id=""
+          requiered
+          placeholder="#1672"
+          name="numero_domi"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="" class="form-label">Correo electrónico:</label>
+        <input
+          type="email"
+          class="form-control"
+          id=""
+          requiered
+          placeholder="correo@gmail.com"
+          name="correo"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="" class="form-label">Número telefónico:</label>
+        <input
+          type="number"
+          class="form-control"
+          id=""
+          requiered
+          placeholder="+56921586479"
+          name="numero_telefono"
+        />
+      </div>
+      
+      <button type="submit" class="btn btn-primary d-grid gap-2 col-6 mx-auto " id="boton"><img src="img/pagar.png" alt=""> Pagar</button>
+    </form>
+    
+
+    <footer class="bg-success">
+      <div>
+        <p class="text-light" id="texto">
+          Todos los derechos reservados Cake House©
+          <span class="sr-only">(current)</span>
+        </p>
+      </div>
+    </footer>
+    <script src="{% static 'cakehouse/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{%static 'cakehouse/js/bootstrap.bundle.min.js'%}"></script>
+
+  </body>
