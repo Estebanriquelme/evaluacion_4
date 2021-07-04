@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.base import Model
+from django.utils.translation import ugettext as _
 
 # Create your models here.
 class Producto(models.Model):
@@ -11,6 +12,12 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        permissions = (
+            ('gerente', _('Gerente cakehouse')),
+        )
+
 class Pago(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=70, default='')
@@ -26,3 +33,8 @@ class Pago(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        permissions = (
+            ('gerente', _('Gerente cakehouse')),
+        )

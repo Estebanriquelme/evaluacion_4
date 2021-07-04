@@ -1,6 +1,11 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Producto, Pago
+from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
+from django.contrib.auth import logout
+
 
 # Create your views here.
 def index(request):
@@ -39,5 +44,27 @@ def guardar_pago(request):
     pago.save()
     return render(request,'cakehouse/index.html')
 
-def login(request):
-    return render(request, 'cakehouse/login.html')
+def iniciosesion(request):
+    return render(request, 'cakehouse/iniciosesion.html')
+
+def inicses(request):
+    usuario = request.POST['usuario']
+    clave = request.POST['clave']
+
+    user = authenticate(request, username=usuario, password=clave)
+
+
+    if user is not None:
+        login(request, user)
+        return render(request,'cakehouse/indexadmin.html')
+    else:
+        return render(request,'cakehouse/index.html')
+
+def logoutv(request):
+    logout(request)
+    return render(request,'cakehouse/index.html')
+
+def indexadmin(request):
+    listado_productos = Producto.objects.all()
+    carrito = {'listado_productos':listado_productos}
+    return render(request,'cakehouse/indexadmin.html',carrito)

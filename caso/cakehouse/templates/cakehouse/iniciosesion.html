@@ -20,18 +20,19 @@
           <img id="imagen" src="img/broom.png" alt="" />Limpiar los campos
         </button>
 
-        <form action="{%url 'cakehouse:index'%}" id="registro" class="row g-3 m-3">
+        <form action="{%url 'cakehouse:inicses'%}" id="registro" class="row g-3 m-3" method="POST">
+          {% csrf_token %}
             <div id="input_login1" class="col-md-12 pb-4 mb-5 mt-5">
-                <label for="" class="form-label">Rut:</label>
+                <label for="" class="form-label">Usuario:</label>
                 <input
                 type="text"
                 class="form-control"
                 id="rut_login"
-                name="rut"
-                placeholder="12.548.365-2"
+                name="usuario"
+                placeholder="Juan"
                 />
                 <p class="error mt-3">
-                <img src="img/error.png" alt="" /> El rut ingresado no es válido, debe contar con puntos y guión
+                <img src="img/error.png" alt="" /> El usuario ingresado no es válido, debe contar con puntos y guión
                 </p>
                 <p class="correcto mt-3">
                 <img src="img/check.png" alt="" /> Los campos están correctos
@@ -44,6 +45,7 @@
                 class="form-control"
                 id="contraseña_login"
                 placeholder="Contraseña"
+                name="clave"
                 />
                 <p class="error mt-3">
                 <img src="img/error.png" alt="" /> La contraseña debe tener de 6 a 8 caracteres, entre números y letras
