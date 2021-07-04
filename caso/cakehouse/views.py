@@ -21,7 +21,16 @@ def pagar_productos(request):
     return render(request,'cakehouse/pagar_productos.html',carrito)
 
 def guardar_pago(request):
-    return HttpResponse('poto')
+    nombre = request.POST['nombre']
+    s_nombre = request.POST['s_nombre']
+    apellido_p = request.POST['apellido_p']
+    apellido_m = request.POST['apellido_m']
+    direccion = request.POST['direccion']
+    casadepto = request.POST['casadepto']
+    numero_domi = request.POST['numero_domi']
+    correo = request.POST['correo']
+    numero_telefono = request.POST['numero_telefono']
+    return HttpResponse(nombre+s_nombre+apellido_p+apellido_m)
 
 def login(request):
     return render(request, 'cakehouse/login.html')

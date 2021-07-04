@@ -54,7 +54,8 @@
         </p>
       </div>
     </div>
-    <form class="row g-3 m-3 contenedor" action="{%url 'cakehouse:guardar_pago'%}">
+    <form class="row g-3 m-3 contenedor" action="{%url 'cakehouse:guardar_pago'%}" method="POST">
+    {% csrf_token %}
       <div class="col-md-3">
         <label for="" class="form-label">Nombre:</label>
         <input
@@ -81,7 +82,7 @@
         <label for="inputAddress" class="form-label">Apellido Paterno:</label>
         <input type="text" class="form-control" id="" required
         placeholder="López" 
-        name=""apellido_p"
+        name="apellido_p"
         />
       </div>
 
