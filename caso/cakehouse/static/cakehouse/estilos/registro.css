@@ -1,0 +1,161 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+
+}
+main,aside{
+    width: 50%;
+    min-height: 100vh;
+    text-align: center;
+}
+aside{
+    background: url(https://images.pexels.com/photos/4252560/pexels-photo-4252560.jpeg?cs=srgb&dl=pexels-anna-kanifatova-4252560.jpg&fm=jpg) ;
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-size: cover;
+    
+    
+    color: rgb(240, 241, 241);
+    
+}
+#login{
+    background: url(https://images.pexels.com/photos/6341564/pexels-photo-6341564.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260) ;
+    background-repeat: no-repeat;
+    background-position:center center;
+    background-size: cover;
+    
+    
+    color: rgb(240, 241, 241);
+    
+}
+main{
+    background: burlywood;
+
+}
+#texto{
+    color: black;
+    background:rgba(184, 184, 184, 0.2);
+}
+main #registro{
+   padding-bottom:10px ;
+}
+.contenedor{
+    height: 100vh;
+    margin: 20px 40px;
+    background: rgba(3, 239, 247, 0.541);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    overflow: auto;
+    
+
+}
+#boton{
+    color: white;
+    background: rgb(93, 184, 3);
+    
+}
+#boton_login{
+    color: white;
+    background: rgb(93, 184, 3);
+    
+}
+#boton_limpiar{
+    background: rgb(241, 167, 7);
+}
+
+
+.registros{
+    border-radius:50px;
+}
+
+#subtitulo{
+    border-bottom: 3px solid rgba(11, 31, 124,0.5);
+    padding-bottom: 10px;
+}
+.error{
+    
+    display: none;
+    color: red;
+    
+    
+}
+
+.correcto{
+    display: none;
+    color: rgb(37, 160, 37);
+}
+#alerta{
+    display: none;
+    background: rgba(206, 12, 12, 0.952);
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    
+}
+#alerta p{
+    margin: 0;
+}
+
+.icono_error{
+    width: 20px;
+    
+}
+.social_bar{
+    position: fixed;
+    right: 0;
+    top: 35%;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 100;
+}
+.icon{
+    color: white;
+    text-decoration: none;
+    padding: .7rem;
+    display: flex;
+    transition: all .3s;
+    
+}
+.icon_facebook{
+    background: #2E406E;
+    border-radius: 1rem 0 0 0;
+}
+.icon_instagram{
+    background: #bd20b5;
+    border-radius: 0 0 0 1rem;
+
+}
+.icon:hover{
+    padding-right: 5rem;
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: 0 0 .5rem rgba(0,0,0,0.42);
+}
+footer{
+    padding: 0;
+    margin: 0;
+    height: 80px;
+    text-align: center;
+}
+#txt{
+    padding-top: 30px;
+}
+
+@media only screen and (max-width: 900px) {
+    body {
+     flex-direction: column;
+    }
+    main,aside{
+        width: 100%;
+    }
+    aside{
+        min-height: 40vh;
+    }
+    main{
+        min-height: 60vh;
+    }
+}

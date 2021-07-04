@@ -22,3 +22,6 @@ def pagar_productos(request):
 
 def guardar_pago(request):
     return HttpResponse('poto')
+
+def login(request):
+    return render(request, 'cakehouse/login.html')
