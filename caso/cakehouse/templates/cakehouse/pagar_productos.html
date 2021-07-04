@@ -56,6 +56,11 @@
     </div>
     <form class="row g-3 m-3 contenedor" action="{%url 'cakehouse:guardar_pago'%}" method="POST">
     {% csrf_token %}
+{%if listado%}
+      {%for n in listado%}
+      <input type="hidden" name="id" value="{{n.id}}" >
+      {%endfor%}
+{%endif%}
       <div class="col-md-3">
         <label for="" class="form-label">Nombre:</label>
         <input
@@ -97,7 +102,7 @@
           name="apellido_m"
         />
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label for="" class="form-label">Dirección:</label>
         <input
           type="text"
@@ -108,7 +113,7 @@
           name="direccion"
         />
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label for="" class="form-label">Casa/depto</label>
         <input
           type="text"
@@ -119,7 +124,7 @@
           name="casadepto"
         />
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label for="" class="form-label">Número de domicilio</label>
         <input
           type="text"
@@ -129,6 +134,23 @@
           placeholder="#1672"
           name="numero_domi"
         />
+      </div>
+      <div class="col-md-3">
+{%if listado%}
+        {%for m in listado%}
+        <label for="" class="form-label">valor a pagar</label>
+        <input
+          type="number"
+          class="form-control"
+          id=""
+          requiered
+          value="{{m.precio}}"
+          
+          disabled = "true"
+        />
+        <input type="hidden" name="precio" value="{{m.precio}}">
+        {%endfor%}
+{%endif%}
       </div>
       <div class="col-md-6">
         <label for="" class="form-label">Correo electrónico:</label>
@@ -144,7 +166,7 @@
       <div class="col-md-6">
         <label for="" class="form-label">Número telefónico:</label>
         <input
-          type="number"
+          type="text"
           class="form-control"
           id=""
           requiered
