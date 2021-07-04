@@ -37,7 +37,7 @@ def guardar_pago(request):
     casa_dpto=casadepto,email=correo,nro_casa=numero_domi,nro_telefono=numero_telefono,pago=precio)
     pago.producto=producto
     pago.save()
-    return HttpResponse(precio)
+    return render(request,'cakehouse/index.html')
 
 def login(request):
     return render(request, 'cakehouse/login.html')
