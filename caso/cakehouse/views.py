@@ -5,7 +5,7 @@ from .models import Producto, Pago
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth import logout
-
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -60,6 +60,7 @@ def inicses(request):
     else:
         listado_productos = Producto.objects.all()
         carrito = {'listado_productos':listado_productos}
+        messages.success(request,"usted no cuenta con una cuenta de administrador")
         return render(request,'cakehouse/index.html',carrito)
 
 def logoutv(request):
