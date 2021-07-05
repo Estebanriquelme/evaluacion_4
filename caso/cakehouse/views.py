@@ -32,17 +32,24 @@ def guardar_pago(request):
     apellido_p = request.POST['apellido_p']
     apellido_m = request.POST['apellido_m']
     direccion = request.POST['direccion']
-    casadepto = request.POST['casadepto']
+    vivienda = request.POST['vivienda']
+    if vivienda=="1":
+        vivienda = "Casa"
+    else:
+        vivienda = "Departamento"
     numero_domi = request.POST['numero_domi']
     correo = request.POST['correo']
     numero_telefono = request.POST['numero_telefono']
     precio = request.POST['precio']
     producto = Producto.objects.get(id=id)
     pago = Pago(nombre=nombre,segundo_n=s_nombre,apellido_p=apellido_p,apellido_m=apellido_m,direccion=direccion,
-    casa_dpto=casadepto,email=correo,nro_casa=numero_domi,nro_telefono=numero_telefono,pago=precio)
+    casa_dpto=vivienda,email=correo,nro_casa=numero_domi,nro_telefono=numero_telefono,pago=precio)
     pago.producto=producto
     pago.save()
-    return render(request,'cakehouse/index.html')
+    listado_productos = Producto.objects.all()
+    messages.success(request,"compra realizada con exito")
+    carrito = {'listado_productos':listado_productos}
+    return render(request,'cakehouse/index.html',carrito)
 
 def iniciosesion(request):
     return render(request, 'cakehouse/iniciosesion.html')
