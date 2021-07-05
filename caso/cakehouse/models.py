@@ -9,7 +9,7 @@ class Producto(models.Model):
     precio = models.IntegerField(default=0)
     stock = models.BooleanField(default=False)
     fecha = models.DateField('fecha de creacion')
-
+    imagen = models.ImageField(upload_to ="productos",null=True)
     def __str__(self):
         return self.nombre
 

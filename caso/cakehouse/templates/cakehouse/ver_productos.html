@@ -1,10 +1,10 @@
 {%load static%}
 <link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/bootstrap.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones1.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'cakehouse/estilos/funciones2.css' %}">
 <body class="cuerpo">
     <!-- navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-success mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
       <img src="{% static 'cakehouse/imagenes/cake.png' %}" alt="" />
       <button
         class="navbar-toggler"
@@ -30,7 +30,10 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Registrarse</a>
+            <a class="nav-link text-light" href="{%url 'cakehouse:iniciosesion'%}">Iniciar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{%url 'cakehouse:logoutv'%}">Cerrar sesión</a>
           </li>
         </ul>
       </div>
@@ -40,11 +43,19 @@
     <main style="margin-bottom: 30px;" id="productos">
         <div style="margin-bottom: 10px;" class="container-lg mb-4">
           <div class="row">
+{%if p.imagen %}
             <img
-              src="img/cupcakes.jpg"
+              src="{{p.imagen.url}}"
               class="col-sm-12 col-lg-6 img_producto mt-5 "
               alt="..."
             />
+{% else %}
+            <img
+            src=""
+            class="col-sm-12 col-lg-6 img_producto mt-5 "
+            alt="imagen no disponible"
+            />
+{%endif %}
             <div class="texto_producto col-sm-12 col-lg-6 mt-5 ">
                 <h1 class="mt-0">{{p.nombre}}</h1>
                 <h4 id="precio" class=" Precio">Precio ${{p.precio}} la unidad</h4>
@@ -55,7 +66,7 @@
   
                 <form action="{%url 'cakehouse:pagar_productos'%}" method="POST">
                 {% csrf_token %}
-                <input type="hidden" name="nombre" value="{{p.nombre}}">
+                <input type="hidden" name="pk" value="{{p.id}}">
                 <button type="submit" class="btn btn-primary btn-lg boton">
                     Pedir
                 </button>
@@ -73,6 +84,14 @@
     </main>
     {%endfor%}
 {%endif%}
+  <footer class="bg-success">
+    <div>
+      <p class="text-light" id="texto">
+        Todos los derechos reservados Cake House©
+        <span class="sr-only">(current)</span>
+      </p>
+    </div>
+  </footer>  
     <script src="{% static 'cakehouse/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{%static 'cakehouse/js/bootstrap.bundle.min.js'%}"></script>
 

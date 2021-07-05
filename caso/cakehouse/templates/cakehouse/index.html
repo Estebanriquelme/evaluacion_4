@@ -120,12 +120,21 @@
             {% for p in listado_productos %}
                 <div class="col-sm-6 col-md-6 pt-4 pb-4">
                 <div class="card cen">
+{%if p.imagen %}
                     <img
                     id="img_card"
-                    src="img/cupcakes.jpg"
+                    src="{{p.imagen.url}}"
                     class="card-img-top"
                     alt="..."
                     />
+{%else%}
+                    <img
+                    id="img_card"
+                    src=""
+                    class="card-img-top"
+                    alt="imagen no disponible"
+                    />
+{%endif%}
                     <div class="card-body bg-success text-light cuerpo_card">
                     <h5 class="card-title titulo">{{p.nombre}}</h5>
                     <p id="parrafo" class="card-text">
@@ -134,9 +143,7 @@
                     <p class="card-text precio">Precio : ${{p.precio}} c/u</p>
                     <form action="{%url 'cakehouse:ver_productos'%}" method="POST">
                         {% csrf_token %}
-                        <input type="hidden" name="nombre" value="{{p.nombre}}">
-                        <input type="hidden" name="descripcion" value="{{p.descripcion}}">
-                        <input type="hidden" name="precio" value="{{p.precio}}">
+                        <input type="hidden" name="pk" value="{{p.id}}">
                         <button class="btn btn-warning" type="submit">ver</button>
                     </form>
                     </div>
@@ -146,9 +153,15 @@
             
         </div>
     </main>
-{%else%}  
-<p>poto</p>
-{%endif%}    
+{%endif%}
+    <footer class="bg-success">
+      <div>
+        <p class="text-light" id="texto">
+          Todos los derechos reservados Cake House©
+          <span class="sr-only">(current)</span>
+        </p>
+      </div>
+    </footer>    
     <script src="{% static 'cakehouse/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{%static 'cakehouse/js/bootstrap.bundle.min.js'%}"></script>
 </body>

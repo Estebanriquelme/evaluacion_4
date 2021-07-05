@@ -14,14 +14,14 @@ def index(request):
     return render(request,'cakehouse/index.html',carrito)
 
 def ver_productos(request):
-    nombre=request.POST['nombre']
-    listado = Producto.objects.filter(nombre__contains=nombre)
+    pk=request.POST['pk']
+    listado = Producto.objects.filter(id=pk)
     carrito = {"listado" : listado}
     return render(request,'cakehouse/ver_productos.html',carrito)
 
 def pagar_productos(request):
-    nombre=request.POST['nombre']
-    listado = Producto.objects.filter(nombre__contains=nombre)
+    pk=request.POST['pk']
+    listado = Producto.objects.filter(id=pk)
     carrito = {"listado" : listado}
     return render(request,'cakehouse/pagar_productos.html',carrito)
 
@@ -58,11 +58,15 @@ def inicses(request):
         login(request, user)
         return render(request,'cakehouse/indexadmin.html')
     else:
-        return render(request,'cakehouse/index.html')
+        listado_productos = Producto.objects.all()
+        carrito = {'listado_productos':listado_productos}
+        return render(request,'cakehouse/index.html',carrito)
 
 def logoutv(request):
     logout(request)
-    return render(request,'cakehouse/index.html')
+    listado_productos = Producto.objects.all()
+    carrito = {'listado_productos':listado_productos}
+    return render(request,'cakehouse/index.html',carrito)
 
 def indexadmin(request):
     listado_productos = Producto.objects.all()
